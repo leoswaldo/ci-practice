@@ -1,0 +1,9 @@
+[adminservers]
+admin-controller.company.com
+
+[dbservers]
+app01.company.com
+
+[appservers]
+#app01.company.com
+app02.company.com

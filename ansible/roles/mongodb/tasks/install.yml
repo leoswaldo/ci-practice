@@ -1,0 +1,5 @@
+---
+- name: Install mongodb
+  command: "yum install -y mongodb-org"
+  args:
+    creates: /usr/bin/mongo

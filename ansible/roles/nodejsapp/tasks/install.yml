@@ -1,0 +1,9 @@
+---
+
+- name: Install forever
+  command: "npm install forever -g"
+
+- name: Install dependencies
+  command: "npm install"
+  args:
+    chdir: /apps/nodejsapp

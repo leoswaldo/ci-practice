@@ -1,0 +1,9 @@
+---
+- name: Download nodesource setup file
+  get_url: url=https://rpm.nodesource.com/setup_6.x dest=/tmp/setup_6.x  mode=0755
+
+- name: Enable nodesource repo
+  shell: "/tmp/setup_6.x"
+
+- name: Install nodejs
+  command: "yum -y install nodejs"

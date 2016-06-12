@@ -1,0 +1,6 @@
+---
+
+  - include: install.yml
+
+  - name: Start mongodb server
+    service: name=mongod enabled=yes state=started
