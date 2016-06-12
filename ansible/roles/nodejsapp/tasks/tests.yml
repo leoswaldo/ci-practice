@@ -1,0 +1,9 @@
+---
+
+  - action: uri url="http://{{ ansible_hostname }}.company.com:3000/health" return_content=yes
+    register: webpage
+
+  - fail: msg='HEALTH MESSAGE FAILS'
+    when: "'good' not in webpage.content"
+  
+  - debug: msg={{ webpage.content }}

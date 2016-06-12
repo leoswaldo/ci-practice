@@ -1,14 +1,21 @@
 ---
 
   - name: Ensure destition dir exists
-    file: path=/app state=directory owner=devopsapp mode=0755
+    file: path=/apps state=directory owner=devopsapp mode=0755
 
   - name: Copy application
     copy: src=/repo/nodejsapp dest=/apps owner=devopsapp mode=0744
 
   - include: install.yml
 
+  - name: Stop application
+    command: "npm stop"
+    args:
+      chdir: /apps/nodejsapp
+
   - name: Start application
     command: "npm start"
     args:
       chdir: /apps/nodejsapp
+
+  - include: tests.yml
