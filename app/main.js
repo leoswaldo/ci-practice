@@ -45,6 +45,22 @@ app.get('/health', function (req, res) {
   res.send('All good');
 });
 
+app.get('/database', function (req, res) {
+  var Schema = mongoose.Schema;
+  var userSchema = new Schema({
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true }
+  });
+
+  var User = mongoose.model('User', userSchema);
+  module.exports = User;
+
+  User.find({}, function(err, users) {
+    if (err) throw err;
+       res.send(users);
+  });
+});
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
