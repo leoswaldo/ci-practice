@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "stop": "apps=`ps aux | grep /usr/bin/node | grep -v 'grep' | awk '{ print $2 }'` && if [ -n \"$apps\" ] ; then  kill $apps ; fi",
     "start": "forever start main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
