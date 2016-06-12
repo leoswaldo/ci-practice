@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
  */
 var conf = {
   development: {
-    servers: [['127.0.0.1', 27017]],
+    servers: [['app01.company.com', 27017]],
     database: 'db_name',
     user: '',
     password: '',
