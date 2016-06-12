@@ -1,0 +1,16 @@
+{
+  "name": "wize-devops",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "forever start main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kinduff <abarcadabra@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mongoose": "^4.4.5"
+  }
+}
