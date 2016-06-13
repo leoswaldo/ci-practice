@@ -5,5 +5,5 @@ admin-controller.company.com
 app01.company.com
 
 [appservers]
-#app01.company.com
+app01.company.com
 app02.company.com
