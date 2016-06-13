@@ -46,7 +46,7 @@ app.get('/health', function (req, res) {
 });
 
 app.get('/health2', function (req, res) {
-  res.send('All good');
+  res.send('All good2');
 });
 
 app.get('/database', function (req, res) {
