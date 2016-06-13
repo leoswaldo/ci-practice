@@ -45,6 +45,10 @@ app.get('/health', function (req, res) {
   res.send('All good');
 });
 
+app.get('/health2', function (req, res) {
+  res.send('All good');
+});
+
 app.get('/database', function (req, res) {
   var Schema = mongoose.Schema;
   var userSchema = new Schema({
