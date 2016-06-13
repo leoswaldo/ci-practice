@@ -5,5 +5,3 @@
 
   - fail: msg='HEALTH MESSAGE FAILS'
     when: "'good' not in webpage.content"
-  
-  - debug: msg={{ webpage.content }}
