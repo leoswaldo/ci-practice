@@ -41,6 +41,10 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
+app.get('/wize', function (req, res) {
+  res.send('Hola ');
+});
+
 app.get('/health', function (req, res) {
   res.send('All good');
 });
