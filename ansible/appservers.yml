@@ -1,5 +1,6 @@
 ---
 - hosts: appservers
+  serial: 1
   roles: 
     - nodejs
     - nodejsapp
