@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 var conf = {
   development: {
     servers: [['app01.company.com', 27017]],
-    database: 'db_name',
+    database: 'projects',
     user: '',
     password: '',
     replicaSet: null,
@@ -34,9 +34,6 @@ if (conf.replicaSet) {
   options.replset = conf.replicaSet;
 }
 
-mongoose.connect(connectionString, options);
-
-
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
@@ -50,19 +47,17 @@ app.get('/health', function (req, res) {
 });
 
 app.get('/database', function (req, res) {
-  var Schema = mongoose.Schema;
-  var userSchema = new Schema({
-    username: { type: String, required: true, unique: true },
-    email: { type: String, required: true }
-  });
+  mongoose.connect(connectionString, options);
 
-  var User = mongoose.model('User', userSchema);
-  module.exports = User;
+  var taskSchema = mongoose.Schema();
+  var Task = mongoose.model('task', taskSchema);
 
-  User.find({}, function(err, users) {
-    if (err) throw err;
-       res.send(users);
-  });
+  Task.find(function (err, tasks) {
+    if (err) return console.error(err);
+    tasks.forEach(function(task) {
+      res.send(task);
+    });
+  })
 });
 
 app.listen(3000, function () {
