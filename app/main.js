@@ -7,14 +7,14 @@ var util = require('./utils');
 var mongoose = require('mongoose');
 
 /**
- * Require databse configuration depending on environment
- */
+ *  * Require databse configuration depending on environment
+ *   */
 var conf = {
   development: {
-    servers: [['app01.company.com', 27017]],
+    servers: [['app01.company.com', 17026]],
     database: 'projects',
-    user: '',
-    password: '',
+    user: 'projects_reader',
+    password: 'secret',
     replicaSet: null,
   },
   production: {
@@ -46,17 +46,18 @@ app.get('/health', function (req, res) {
   res.send('All good');
 });
 
+
+var taskSchema = mongoose.Schema();
+
 app.get('/database', function (req, res) {
   mongoose.connect(connectionString, options);
 
-  var taskSchema = mongoose.Schema();
   var Task = mongoose.model('task', taskSchema);
 
   Task.find(function (err, tasks) {
     if (err) return console.error(err);
-    tasks.forEach(function(task) {
-      res.send(task);
-    });
+    mongoose.connection.close()
+    res.send(tasks);
   })
 });
 
